@@ -1,5 +1,15 @@
 //Interlocking pieces
 //copyright SJ Hindmarch 2015
+// ToDo: How to make the male piece smaller in the right dimensions to fit the female piece
+
+module trapezoid(){
+	linear_extrude(height=5){
+		polygon(
+			points=[[0,0],[3,5],[7,5],[10,0]],
+			paths=[[0,1,2,3]]
+		);
+	}
+}
 
 module base(){
 	cube([20,20,5]);
@@ -7,10 +17,8 @@ module base(){
 
 module lock(){
 	cube([10,5,5]);
-	polyhedron(
-		points=[[0,5,0],[10,5,0],[3,10,0],[7,10,0]],
-		faces=[[0,1,2,3]]
-	);
+	translate([0,5,0,]){trapezoid();}
+	translate([0,10,0,])mirror([0,1,0]){trapezoid();}
 }
 
 module male(){
@@ -29,4 +37,4 @@ module female(){
 male();
 female();
 
-!lock();
+//!lock();
