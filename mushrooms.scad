@@ -30,3 +30,22 @@ translate([-13.75,-13.75,0]){
 translate([-20,-20,15])linear_extrude(height=5){
 	square([20,20]);
 }
+
+// A sphere mushroom with umbrella top
+translate([30,10,10]){
+	resize([7.5,7.5,20])sphere(10);
+	translate([0,0,5])resize([20,20,5])difference(){
+		sphere(10);
+		translate([-10,-10,-10])cube([20,20,10]);
+	}
+}
+
+// A sphere mushroom with upturned umbrella top
+translate([30,-10,10]){
+	resize([7.5,7.5,20])sphere(10);
+	translate([0,0,10])resize([20,20,5])difference(){
+		sphere(10);
+		translate([-10,-10,0])cube([20,20,10]);
+	}
+}
+
